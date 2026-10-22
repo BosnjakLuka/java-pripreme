@@ -1,40 +1,35 @@
-\# Java pripreme
+# Java pripreme
 
+Repozitorij sadrži moje pripreme za laboratorijske vježbe iz programiranja u Javi.
 
+Cilj je pratiti moj napredak kroz samostalno rješavanje zadataka i praktičnu primjenu gradiva s predavanja.
 
-Ovaj repozitorij sadrži moje pripreme za laboratorijske vježbe iz programiranja u Javi.
+## Sadržaj
 
+### Priprema 01 — Nogometni klub
 
+Konzolna Java aplikacija za evidenciju nogometnih klubova.
 
-Cilj repozitorija je pratiti moj napredak u učenju Jave kroz samostalno rješavanje pripremnih zadataka, rad s objektno orijentiranim programiranjem i postupno usvajanje gradiva s predavanja.
+Gradivo obuhvaćeno pripremom:
+- klase i objekti
+- enkapsulacija
+- konstruktori
+- nasljeđivanje
+- korisnički unos
+- rad s poljima
+- pretraživanje objekata
 
+## Struktura repozitorija
 
+- `zadaci/` — originalni zadaci za pripreme
+- `Priprema_01_NogometniKlub/` — prva priprema i pripadajući izvorni kod
+- buduće pripreme bit će dodavane kao zasebne mape
 
-\## Struktura repozitorija
+## Razvojno okruženje
 
+- IntelliJ IDEA 2026.2.1
+- JDK 25
 
-
-\- `zadaci/` – originalni zadaci za pripreme
-
-\- `Priprema\_01\_NogometniKlub/` – rješenje prve pripreme
-
-\- buduće pripreme bit će dodavane kao zasebne mape
-
-
-
-\## Okruženje
-
-
-
-\- IntelliJ IDEA 2026.2.1
-
-\- JDK 25
-
-
-
-\## Cilj
-
-
+## Cilj repozitorija
 
 Svaku pripremu nastojim riješiti samostalno, razumjeti napisani kod i moći objasniti način rada programa.
-
