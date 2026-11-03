@@ -42,23 +42,23 @@ Sada je potrebno uvesti nove tipove i izmijeniti postojeće odnose među njima:
 ### Povezanost tipova
 
 ```text
-Osoba (abstract)
-├── Igrac
-└── Trener
+klase.Osoba (abstract)
+├── klase.Igrac
+└── klase.Trener
 
-NogometniKlub ── implements ──> Opisivo (interface)
+klase.NogometniKlub ── implements ──> Opisivo (interface)
 KapacitetObjekta (interface) ── extends ──> Opisivo (interface)
 Gradjevina (abstract) ── implements ──> KapacitetObjekta (interface)
-├── Stadion
+├── klase.Stadion
 ├── MedicinskaOrdinacija
 └── SportskiDom
 
-Igrac ── koristi ──> Pozicija (enum)
+klase.Igrac ── koristi ──> Pozicija (enum)
 Gradjevina ── ima ──> Adresa (record)
 
-NogometniKlub
-├── Trener trener
-├── Igrac[] igraci
+klase.NogometniKlub
+├── klase.Trener trener
+├── klase.Igrac[] igraci
 └── Gradjevina[] gradjevine
 ```
 
@@ -76,13 +76,13 @@ src/
             ├── aplikacija/
             │   └── Main.java
             ├── apstraktne/
-            │   ├── Osoba.java
+            │   ├── klase.Osoba.java
             │   └── Gradjevina.java
             ├── klase/
-            │   ├── NogometniKlub.java
-            │   ├── Igrac.java
-            │   ├── Trener.java
-            │   ├── Stadion.java
+            │   ├── klase.NogometniKlub.java
+            │   ├── klase.Igrac.java
+            │   ├── klase.Trener.java
+            │   ├── klase.Stadion.java
             │   ├── MedicinskaOrdinacija.java
             │   └── SportskiDom.java
             ├── sucelja/
@@ -330,7 +330,7 @@ Pozicija (1 - VRATAR, 2 - BRANIC, 3 - VEZNJAK, 4 - NAPADAC): 2
 Koliko građevina želite unijeti: 4
 
 --- GRAĐEVINA 1 ---
-Vrsta (1 - Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 1
+Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 1
 Naziv: Poljud
 Ulica: Ulica Mediteranskih igara
 Kućni broj: 2
@@ -340,7 +340,7 @@ Godina izgradnje: 1979
 Natkriven (true/false): false
 
 --- GRAĐEVINA 2 ---
-Vrsta (1 - Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 2
+Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 2
 Naziv: Klupska ordinacija
 Ulica: Zrinsko-frankopanska
 Kućni broj: 8
@@ -349,7 +349,7 @@ Broj ambulanti: 3
 Ima hitnu službu (true/false): true
 
 --- GRAĐEVINA 3 ---
-Vrsta (1 - Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
+Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
 Naziv: Sportski dom A
 Ulica: Put Brodarice
 Kućni broj: 12
@@ -358,7 +358,7 @@ Broj kreveta: 30
 Ima blagovaonicu (true/false): true
 
 --- GRAĐEVINA 4 ---
-Vrsta (1 - Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
+Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
 Naziv: Sportski dom B
 Ulica: Put Supavla
 Kućni broj: 5
@@ -390,14 +390,14 @@ Unesite naziv kluba: hajduk
 ===== HAJDUK =====
 Grad: Split
 Godina osnivanja: 1911
-Trener: Ivan Horvat
+klase.Trener: Ivan Horvat
 
 Igrači:
 1. Marko Marić, 1998., dres 4, BRANIC
 
 Građevine:
 
-1. Stadion: Poljud
+1. klase.Stadion: Poljud
    Adresa: Ulica Mediteranskih igara 2, Split
    Kapacitet: 33000 gledatelja
    Godina izgradnje: 1979

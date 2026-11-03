@@ -1,3 +1,5 @@
+package klase;
+
 public class Stadion {
 
     private String naziv;

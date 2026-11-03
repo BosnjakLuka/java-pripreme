@@ -1,3 +1,5 @@
+package klase;
+
 public class NogometniKlub {
 
     private String naziv;
@@ -65,9 +67,13 @@ public class NogometniKlub {
     }
 
     public String getOpis() {
-        return "===== " + naziv + " =====\n" + "Grad: " + grad + "\n" +
-                "Godina osnivanja: " + godinaOsnivanja + "\n" +
-                "Trener: " + trener.getIme() + " " + trener.getPrezime() +"\n" +
-                "Stadion: " + stadion.getNaziv() + "\n";
+        String imeTrenera = trener == null ? "-" : trener.getIme() + " " + trener.getPrezime();
+        String nazivStadiona = stadion == null ? "-" : stadion.getNaziv();
+
+        return "===== " + naziv.toUpperCase() + " =====\n"
+                + "Grad: " + grad + "\n"
+                + "Godina osnivanja: " + godinaOsnivanja + "\n"
+                + "Trener: " + trener.getIme() + " " + trener.getPrezime() +"\n"
+                + "Stadion: " + stadion.getNaziv() + "\n";
     }
 }

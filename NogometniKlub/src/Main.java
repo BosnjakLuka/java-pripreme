@@ -1,3 +1,8 @@
+import klase.Igrac;
+import klase.NogometniKlub;
+import klase.Stadion;
+import klase.Trener;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,35 +16,30 @@ public class Main {
         NogometniKlub[] klubovi = new NogometniKlub[brojKlubova];
 
         for (int i = 0; i < brojKlubova; i++) {
-            System.out.print("===== UNOS KLUBA " + (i + 1) +  " =====");
-            System.out.println("\n");
-            System.out.print("Naziv kluba: ");
-            String nazivKluba = unos.nextLine();
-            System.out.print("Grad: ");
-            String grad = unos.nextLine();
+            System.out.println("===== UNOS KLUBA " + (i + 1) +  " =====");
+
+
+            String nazivKluba = procitajString(unos, "Naziv kluba: ");
+            String gradKluba = procitajString(unos, "Grad: ");
             System.out.print("Godina osnivanja: ");
             int godinaOsnivanja = unos.nextInt();
             unos.nextLine();
-            System.out.print("\n");
-            System.out.print("Naziv stadiona: ");
-            String nazivStadiona = unos.nextLine();
-            System.out.print("Grad stadiona: ");
-            String gradStadiona = unos.nextLine();
+            String nazivStadiona = procitajString(unos, "Naziv stadiona: ");
+            String gradStadiona = procitajString(unos, "Grad stadiona: ");
             System.out.print("Kapacitet: ");
             int kapacitet = unos.nextInt();
             unos.nextLine();
             System.out.print("Godina izgradnje: ");
             int godinaIzgradnje = unos.nextInt();
             unos.nextLine();
-            System.out.print("Je li stadion natkriven: ");
+            System.out.print("Je li stadion natkriven (true/false): ");
             boolean natkriven = unos.nextBoolean();
             unos.nextLine();
             Stadion stadion = new Stadion(nazivStadiona, gradStadiona, kapacitet, godinaIzgradnje, natkriven);
-            System.out.print("\n");
-            System.out.print("Ime trenera: ");
-            String imeTrenera = unos.nextLine();
-            System.out.print("Prezime trenera: ");
-            String prezimeTrenera = unos.nextLine();
+
+
+            String imeTrenera = procitajString(unos, "Ime trenera: ");
+            String prezimeTrenera = procitajString(unos, "Prezime trenera: ");
             System.out.print("Godina rođenja: ");
             int godinaRodenjaTrenera = unos.nextInt();
             unos.nextLine();
@@ -47,61 +47,80 @@ public class Main {
             int godineIskustva = unos.nextInt();
             unos.nextLine();
             Trener trener = new Trener(imeTrenera, prezimeTrenera, godinaRodenjaTrenera, godineIskustva);
-            System.out.print("\n");
+
             System.out.print("Koliko igrača želite unijeti: ");
             int brojIgraca = unos.nextInt();
             unos.nextLine();
             Igrac[] igraci = new Igrac[brojIgraca];
-            System.out.print("\n");
+
             for (int j = 0; j < brojIgraca; j++) {
+                System.out.println();
                 System.out.println("--- IGRAČ " + (j + 1) + " ---");
-                System.out.print("Ime: ");
-                String imeIgraca = unos.nextLine();
-                System.out.print("Prezime: ");
-                String prezimeIgraca = unos.nextLine();
+                String imeIgraca = procitajString(unos, "Ime: ");
+                String prezimeIgraca = procitajString(unos, "Prezime: ");
                 System.out.print("Godina rođenja: ");
                 int godinaRodenjaIgraca = unos.nextInt();
                 unos.nextLine();
                 System.out.print("Broj dresa: ");
                 int brojDresa = unos.nextInt();
                 unos.nextLine();
-                System.out.print("Pozicija: ");
-                String pozicija = unos.nextLine();
-                System.out.print("\n");
+                String pozicija = procitajString(unos, "Pozicija: ");
                 Igrac igrac = new Igrac(imeIgraca, prezimeIgraca, godinaRodenjaIgraca, brojDresa, pozicija);
                 igraci[j] = igrac;
             }
-            NogometniKlub klub = new NogometniKlub(nazivKluba, grad, godinaOsnivanja, stadion, trener, igraci);
+            NogometniKlub klub = new NogometniKlub(nazivKluba, gradKluba, godinaOsnivanja, stadion, trener, igraci);
             klubovi[i] = klub;
         }
 
-        System.out.print("\n");
-
-        int odabir = -1;
-        while (odabir != 0) {
+        while (true) {
+            System.out.println();
             System.out.println("===== NOGOMETNI KLUBOVI =====");
+            System.out.println();
             System.out.println("1 - Pretraži klub");
             System.out.println("0 - Završi program");
-            System.out.print("\n");
-            System.out.printf("Odabir: ");
-            odabir = unos.nextInt();
+            System.out.println();
+
+            System.out.print("Odabir: ");
+            int odabir = unos.nextInt();
             unos.nextLine();
-            if (odabir == 1) {
-                System.out.println("Unesite naziv kluba: ");
-                String trazeniNaziv = unos.nextLine();
-                boolean pronaden = false;
-                for (int i = 0; i < klubovi.length; i++) {
-                    if (klubovi[i].getNaziv().equalsIgnoreCase(trazeniNaziv)) {
-                        System.out.println(klubovi[i].getOpis());
-                        pronaden = true;
-                    }
-                }
-                if (!pronaden) {
-                    System.out.println("Nema kluba s tim nazivom.");
-                }
-            } else if (odabir == 0) {
-                // Završi program
+
+            if (odabir == 0) {
+                break;
             }
+
+            if (odabir == 1) {
+                String trazeniNaziv = procitajString(unos, "Unesite naziv kluba: ");
+                NogometniKlub pronadeniKlub = pronadiKlubPoNazivu(klubovi, trazeniNaziv);
+
+                if (pronadeniKlub == null) {
+                    System.out.println("Nema kluba s tim nazivom.");
+                } else {
+                    System.out.println(pronadeniKlub.getOpis());
+                }
+            } else {
+                System.out.println("Nepoznat odabir.");
+            }
+        }
+
+        System.out.println("Program završen.");
+    }
+    private static NogometniKlub pronadiKlubPoNazivu(NogometniKlub[] klubovi, String naziv) {
+        for (NogometniKlub klub : klubovi) {
+            if (klub != null && klub.getNaziv() != null && klub.getNaziv().equalsIgnoreCase(naziv)) {
+                return klub;
+            }
+        }
+        return null;
+    }
+
+    private static String procitajString(Scanner scanner, String poruka) {
+        while (true) {
+            System.out.print(poruka);
+            String unos = scanner.nextLine().trim();
+            if (!unos.isEmpty()) {
+                return unos;
+            }
+            System.out.println("Unos ne smije biti prazan.");
         }
     }
 }
