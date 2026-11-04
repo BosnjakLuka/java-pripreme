@@ -1,6 +1,8 @@
-package klase;
+package hr.tvz.nogomet.klase;
 
-public class Igrac extends Osoba{
+import hr.tvz.nogomet.apstraktne.Osoba;
+
+public class Igrac extends Osoba {
 
     public static final String POZICIJA_VRATAR = "VRATAR";
     public static final String POZICIJA_BRANIC = "BRANIC";

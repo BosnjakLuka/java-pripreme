@@ -1,4 +1,4 @@
-package klase;
+package hr.tvz.nogomet.klase;
 
 public class Stadion {
 

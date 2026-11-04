@@ -42,23 +42,23 @@ Sada je potrebno uvesti nove tipove i izmijeniti postojeće odnose među njima:
 ### Povezanost tipova
 
 ```text
-klase.Osoba (abstract)
-├── klase.Igrac
-└── klase.Trener
+hr.tvz.nogomet.apstraktne.Osoba (abstract)
+├── hr.tvz.nogomet.klase.Igrac
+└── hr.tvz.nogomet.klase.Trener
 
-klase.NogometniKlub ── implements ──> Opisivo (interface)
+hr.tvz.nogomet.klase.NogometniKlub ── implements ──> Opisivo (interface)
 KapacitetObjekta (interface) ── extends ──> Opisivo (interface)
 Gradjevina (abstract) ── implements ──> KapacitetObjekta (interface)
-├── klase.Stadion
+├── hr.tvz.nogomet.klase.Stadion
 ├── MedicinskaOrdinacija
 └── SportskiDom
 
-klase.Igrac ── koristi ──> Pozicija (enum)
+hr.tvz.nogomet.klase.Igrac ── koristi ──> Pozicija (enum)
 Gradjevina ── ima ──> Adresa (record)
 
-klase.NogometniKlub
-├── klase.Trener trener
-├── klase.Igrac[] igraci
+hr.tvz.nogomet.klase.NogometniKlub
+├── hr.tvz.nogomet.klase.Trener trener
+├── hr.tvz.nogomet.klase.Igrac[] igraci
 └── Gradjevina[] gradjevine
 ```
 
@@ -74,15 +74,15 @@ src/
     └── tvz/
         └── nogomet/
             ├── aplikacija/
-            │   └── Main.java
+            │   └── hr.tvz.nogomet.aplikacija.Main.java
             ├── apstraktne/
-            │   ├── klase.Osoba.java
+            │   ├── hr.tvz.nogomet.apstraktne.Osoba.java
             │   └── Gradjevina.java
             ├── klase/
-            │   ├── klase.NogometniKlub.java
-            │   ├── klase.Igrac.java
-            │   ├── klase.Trener.java
-            │   ├── klase.Stadion.java
+            │   ├── hr.tvz.nogomet.klase.NogometniKlub.java
+            │   ├── hr.tvz.nogomet.klase.Igrac.java
+            │   ├── hr.tvz.nogomet.klase.Trener.java
+            │   ├── hr.tvz.nogomet.klase.Stadion.java
             │   ├── MedicinskaOrdinacija.java
             │   └── SportskiDom.java
             ├── sucelja/
@@ -330,7 +330,7 @@ Pozicija (1 - VRATAR, 2 - BRANIC, 3 - VEZNJAK, 4 - NAPADAC): 2
 Koliko građevina želite unijeti: 4
 
 --- GRAĐEVINA 1 ---
-Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 1
+Vrsta (1 - hr.tvz.nogomet.klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 1
 Naziv: Poljud
 Ulica: Ulica Mediteranskih igara
 Kućni broj: 2
@@ -340,7 +340,7 @@ Godina izgradnje: 1979
 Natkriven (true/false): false
 
 --- GRAĐEVINA 2 ---
-Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 2
+Vrsta (1 - hr.tvz.nogomet.klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 2
 Naziv: Klupska ordinacija
 Ulica: Zrinsko-frankopanska
 Kućni broj: 8
@@ -349,7 +349,7 @@ Broj ambulanti: 3
 Ima hitnu službu (true/false): true
 
 --- GRAĐEVINA 3 ---
-Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
+Vrsta (1 - hr.tvz.nogomet.klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
 Naziv: Sportski dom A
 Ulica: Put Brodarice
 Kućni broj: 12
@@ -358,7 +358,7 @@ Broj kreveta: 30
 Ima blagovaonicu (true/false): true
 
 --- GRAĐEVINA 4 ---
-Vrsta (1 - klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
+Vrsta (1 - hr.tvz.nogomet.klase.Stadion, 2 - MedicinskaOrdinacija, 3 - SportskiDom): 3
 Naziv: Sportski dom B
 Ulica: Put Supavla
 Kućni broj: 5
@@ -390,14 +390,14 @@ Unesite naziv kluba: hajduk
 ===== HAJDUK =====
 Grad: Split
 Godina osnivanja: 1911
-klase.Trener: Ivan Horvat
+hr.tvz.nogomet.klase.Trener: Ivan Horvat
 
 Igrači:
 1. Marko Marić, 1998., dres 4, BRANIC
 
 Građevine:
 
-1. klase.Stadion: Poljud
+1. hr.tvz.nogomet.klase.Stadion: Poljud
    Adresa: Ulica Mediteranskih igara 2, Split
    Kapacitet: 33000 gledatelja
    Godina izgradnje: 1979

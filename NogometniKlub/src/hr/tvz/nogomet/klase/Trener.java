@@ -1,6 +1,8 @@
-package klase;
+package hr.tvz.nogomet.klase;
 
-public class Trener extends Osoba{
+import hr.tvz.nogomet.apstraktne.Osoba;
+
+public class Trener extends Osoba {
 
     private int godineIskustva;
 

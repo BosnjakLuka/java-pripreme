@@ -1,7 +1,9 @@
-import klase.Igrac;
-import klase.NogometniKlub;
-import klase.Stadion;
-import klase.Trener;
+package hr.tvz.nogomet.aplikacija;
+
+import hr.tvz.nogomet.klase.Igrac;
+import hr.tvz.nogomet.klase.NogometniKlub;
+import hr.tvz.nogomet.klase.Stadion;
+import hr.tvz.nogomet.klase.Trener;
 
 import java.util.Scanner;
 

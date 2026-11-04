@@ -1,6 +1,6 @@
-package klase;
+package hr.tvz.nogomet.apstraktne;
 
-public class Osoba {
+public abstract class Osoba {
     private String ime;
     private String prezime;
     private int godinaRodenja;
