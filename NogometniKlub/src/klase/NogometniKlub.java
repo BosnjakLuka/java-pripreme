@@ -73,7 +73,7 @@ public class NogometniKlub {
         return "===== " + naziv.toUpperCase() + " =====\n"
                 + "Grad: " + grad + "\n"
                 + "Godina osnivanja: " + godinaOsnivanja + "\n"
-                + "Trener: " + trener.getIme() + " " + trener.getPrezime() +"\n"
-                + "Stadion: " + stadion.getNaziv() + "\n";
+                + "Trener: " + imeTrenera +"\n"
+                + "Stadion: " + nazivStadiona + "\n";
     }
 }
