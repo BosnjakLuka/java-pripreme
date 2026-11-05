@@ -4,6 +4,7 @@ import hr.tvz.nogomet.klase.Igrac;
 import hr.tvz.nogomet.klase.NogometniKlub;
 import hr.tvz.nogomet.klase.Stadion;
 import hr.tvz.nogomet.klase.Trener;
+import hr.tvz.nogomet.enumeracije.Pozicija;
 
 import java.util.Scanner;
 
@@ -12,28 +13,19 @@ public class Main {
 
         Scanner unos = new Scanner(System.in);
 
-        System.out.print("Koliko klubova želite unijeti: ");
-        int brojKlubova = unos.nextInt();
-        unos.nextLine();
+        int brojKlubova = procitajInt(unos, "Koliko klubova želite unijeti: ");
         NogometniKlub[] klubovi = new NogometniKlub[brojKlubova];
 
         for (int i = 0; i < brojKlubova; i++) {
             System.out.println("===== UNOS KLUBA " + (i + 1) +  " =====");
 
-
             String nazivKluba = procitajString(unos, "Naziv kluba: ");
             String gradKluba = procitajString(unos, "Grad: ");
-            System.out.print("Godina osnivanja: ");
-            int godinaOsnivanja = unos.nextInt();
-            unos.nextLine();
+            int godinaOsnivanja = procitajInt(unos, "Godina osnivanja: ");
             String nazivStadiona = procitajString(unos, "Naziv stadiona: ");
             String gradStadiona = procitajString(unos, "Grad stadiona: ");
-            System.out.print("Kapacitet: ");
-            int kapacitet = unos.nextInt();
-            unos.nextLine();
-            System.out.print("Godina izgradnje: ");
-            int godinaIzgradnje = unos.nextInt();
-            unos.nextLine();
+            int kapacitet = procitajInt(unos, "Kapacitet: ");
+            int godinaIzgradnje = procitajInt(unos, "Godina izgradnje: ");
             System.out.print("Je li stadion natkriven (true/false): ");
             boolean natkriven = unos.nextBoolean();
             unos.nextLine();
@@ -42,17 +34,11 @@ public class Main {
 
             String imeTrenera = procitajString(unos, "Ime trenera: ");
             String prezimeTrenera = procitajString(unos, "Prezime trenera: ");
-            System.out.print("Godina rođenja: ");
-            int godinaRodenjaTrenera = unos.nextInt();
-            unos.nextLine();
-            System.out.print("Godine iskustva: ");
-            int godineIskustva = unos.nextInt();
-            unos.nextLine();
+            int godinaRodenjaTrenera = procitajInt(unos, "Godina rođenja: ");
+            int godineIskustva = procitajInt(unos, "Godine iskustva: ");
             Trener trener = new Trener(imeTrenera, prezimeTrenera, godinaRodenjaTrenera, godineIskustva);
 
-            System.out.print("Koliko igrača želite unijeti: ");
-            int brojIgraca = unos.nextInt();
-            unos.nextLine();
+            int brojIgraca = procitajInt(unos, "Koliko igrača želite unijeti: ");
             Igrac[] igraci = new Igrac[brojIgraca];
 
             for (int j = 0; j < brojIgraca; j++) {
@@ -60,13 +46,9 @@ public class Main {
                 System.out.println("--- IGRAČ " + (j + 1) + " ---");
                 String imeIgraca = procitajString(unos, "Ime: ");
                 String prezimeIgraca = procitajString(unos, "Prezime: ");
-                System.out.print("Godina rođenja: ");
-                int godinaRodenjaIgraca = unos.nextInt();
-                unos.nextLine();
-                System.out.print("Broj dresa: ");
-                int brojDresa = unos.nextInt();
-                unos.nextLine();
-                String pozicija = procitajString(unos, "Pozicija: ");
+                int godinaRodenjaIgraca = procitajInt(unos, "Godina rođenja: ");
+                int brojDresa = procitajInt(unos, "Broj dresa: ");
+                Pozicija pozicija = procitajPoziciju(unos, "Pozicija (1 - VRATAR, 2 - BRANIC, 3 - VEZNJAK, 4 - NAPADAC): ");
                 Igrac igrac = new Igrac(imeIgraca, prezimeIgraca, godinaRodenjaIgraca, brojDresa, pozicija);
                 igraci[j] = igrac;
             }
@@ -82,14 +64,11 @@ public class Main {
             System.out.println("0 - Završi program");
             System.out.println();
 
-            System.out.print("Odabir: ");
-            int odabir = unos.nextInt();
-            unos.nextLine();
+            int odabir = procitajInt(unos, "Odabir: ");
 
             if (odabir == 0) {
                 break;
             }
-
             if (odabir == 1) {
                 String trazeniNaziv = procitajString(unos, "Unesite naziv kluba: ");
                 NogometniKlub pronadeniKlub = pronadiKlubPoNazivu(klubovi, trazeniNaziv);
@@ -103,9 +82,9 @@ public class Main {
                 System.out.println("Nepoznat odabir.");
             }
         }
-
         System.out.println("Program završen.");
     }
+
     private static NogometniKlub pronadiKlubPoNazivu(NogometniKlub[] klubovi, String naziv) {
         for (NogometniKlub klub : klubovi) {
             if (klub != null && klub.getNaziv() != null && klub.getNaziv().equalsIgnoreCase(naziv)) {
@@ -123,6 +102,41 @@ public class Main {
                 return unos;
             }
             System.out.println("Unos ne smije biti prazan.");
+        }
+    }
+
+    private static int procitajInt(Scanner scanner, String poruka) {
+        while (true) {
+            System.out.print(poruka);
+            if (!scanner.hasNextInt()) {
+                scanner.nextLine();
+                System.out.println("Morate unijeti cijeli broj.");
+                continue;
+            }
+            int broj = scanner.nextInt();
+            scanner.nextLine();
+            if (broj >= 0) {
+                return broj;
+            }
+            System.out.println("Broj ne smije biti negativan.");
+        }
+    }
+
+    private static Pozicija procitajPoziciju(Scanner scanner, String poruka) {
+        while (true) {
+            int odabir = procitajInt(scanner, poruka);
+            switch (odabir) {
+                case 1:
+                    return Pozicija.VRATAR;
+                case 2:
+                    return Pozicija.BRANIC;
+                case 3:
+                    return Pozicija.VEZNJAK;
+                case 4:
+                    return Pozicija.NAPADAC;
+                default:
+                    System.out.println("Nepoznat odabir. Pokušajte ponovno.");
+            }
         }
     }
 }
