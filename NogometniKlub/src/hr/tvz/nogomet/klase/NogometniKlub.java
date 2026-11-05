@@ -1,6 +1,8 @@
 package hr.tvz.nogomet.klase;
 
-public class NogometniKlub {
+import hr.tvz.nogomet.sucelja.Opisivo;
+
+public class NogometniKlub implements Opisivo {
 
     private String naziv;
     private String grad;
@@ -66,6 +68,7 @@ public class NogometniKlub {
         this.igraci = igraci;
     }
 
+    @Override
     public String getOpis() {
         String imeTrenera = trener == null ? "-" : trener.getIme() + " " + trener.getPrezime();
         String nazivStadiona = stadion == null ? "-" : stadion.getNaziv();
